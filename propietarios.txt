@@ -1,0 +1,7 @@
+6 propietarios
+Humano 12345678S saturno
+Humano 87654321A la tierra
+Humano 11112222Z marte
+Humano 12345678H la tierra
+Humano 33333333S marte
+Extraterrestre 098765432 jupiter

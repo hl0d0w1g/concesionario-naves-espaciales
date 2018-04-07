@@ -1,0 +1,5 @@
+4 2 2013    Humano 12345678S    EstacionEspacial A1111AAA
+25 12 2015    Humano 12345678S    Caza S1111SSS
+4 5 2016    Humano 87654321A    CargeroEspacial Z1111ZZZ
+4 10 2016    Extraterrestre 123456789    Destructor D1111DDD
+6 12 2017    Humano 12345678H    Caza Z9876YXW
