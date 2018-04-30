@@ -14,7 +14,7 @@ int main()
 
 /*
  *
- * Entendemos el programa como una aplicacion que
+ * El programa es una aplicacion que
  * estaria instalada en el ordenador de un concesionario
  * de naves espaciales y que solo manejaria el responsable
  * de ventas

@@ -8,7 +8,7 @@
 #include <armamento.h>
 #include <plantillas.h>
 #include <iostream>
-#include <cstdlib> //Libreria para la funcion system que utilizamos para "limpiar" la pantalla y la funcion atoi para convertir strings en ints
+#include <cstdlib> //Libreria para la funcion system que se utiliza para "limpiar" la pantalla y la funcion atoi para convertir strings en ints
 #include <cstring> //Libreria para trabajar con strings
 #include <ctime> //Libreria para trabajar con la fecha y la hora
 #include <fstream> //Libreria para trabajar con ficheros
@@ -27,7 +27,6 @@ void Administracion::menuPrincipal(){ //Este metodo muestra el menu principal pa
     std::cout << "*****************                 ¡Bienvenido!                *****************" << std::endl;
     std::cout << "*******************************************************************************" << std::endl;
     std::cout << "*******************************************************************************" << std::endl;
-    std::cout << "                                                          Luis Cambero Piqueras" << std::endl;
     std::cout << std::endl;
     int opcion;
     do{
@@ -55,11 +54,11 @@ void Administracion::menuPrincipal(){ //Este metodo muestra el menu principal pa
                 menuCompra(); //Se llama al sub menu que gestiona las decisiones que tienen que ver con el proceso de compra de una nave por un propietario
                 break;
             }
-            case 4:{ //Funcion que no hace falta implementar para la proxima entrega
+            case 4:{ //Se llama al sub menu que gestiona el historico de ventas
                 menuHistorico();
                 break;
             }
-            case 5:{
+            case 5:{ //Se llama al sub menu que gestiona las ventas
                 menuVentas();
                 break;
             }
@@ -101,7 +100,7 @@ void Administracion::menuPropietarios(){ //Este metodo muestra un sub menu refer
                 std::cout << "" << std::endl;
                 break;
             }
-            case 2:{ //Modificar un propietario, entendemos que el numero identificador no se puede cambiar al igual que no podemos cambiar nosotros de DNI
+            case 2:{ //Modificar un propietario, el numero identificador no se puede cambiar al igual que no podemos cambiar nosotros de DNI
                 if(_nPropietarios == 0){
                     std::cout << "------------------------------------------------------------------------------" << std::endl;
                     std::cout << "No hay propietarios registrados en el sistema" << std::endl;
@@ -593,7 +592,7 @@ void Administracion::modificarPropietario(){ //Modifica el planeta de residencia
             break;
         };
     }
-    if(i == _nPropietarios){ //Si el bucle anterior llega al fina lsignifica que no exite esa identificacion
+    if(i == _nPropietarios){ //Si el bucle anterior llega al final significa que no exite esa identificacion
         std::cout << "------------------------------------------------------------------------------" << std::endl;
         std::cout << "El número de identificacion no coincide con ningun usuario" << std::endl;
         std::cout << "------------------------------------------------------------------------------" << std::endl;
@@ -679,16 +678,13 @@ bool Administracion::comprobarNIF(const string nif){ //Comprueba que el nif esta
         return false;
     }
     strcpy(NIF, nif.c_str()); //Se copia el string en una cadena de caracteres para trabajar mejor con el
-    //std::cout << "NIF: " << NIF << std::endl;
     if((NIF[8] < 65)||(NIF[8] > 90)){ //Se comprueba si el ultimo caracter es una letra mayuscula
-         //std::cout << NIF[8] << std::endl;
          std::cout << "NIF no valido, el NIF debe contener 8 numeros naturales y una letra mayuscula 'NNNNNNNNL'" << std::endl;
          std::cout << "" << std::endl;
          return false;
     }else{
          for(int i = 0; i < 8; i++){ //Si lo anterior se cumple, pasa a comprobar que el resto son numeros naturales
              if((NIF[i] < 48)||(NIF[i] > 57)){
-                 //std::cout << NIF[i] << "," << i << std::endl;
                  std::cout << "NIF no valido, el NIF debe contener 8 numeros naturales y una letra mayuscula 'NNNNNNNNL'" << std::endl;
                  std::cout << "" << std::endl;
                  return false;
@@ -696,7 +692,6 @@ bool Administracion::comprobarNIF(const string nif){ //Comprueba que el nif esta
              }
          }
     }
-    //std::cout << "NIF valido" << std::endl;
     return true;
 }
 bool Administracion::comprobarNIE(const string nie){ //Comprueba que el nie esta formado por 9 numeros naturales
@@ -707,18 +702,14 @@ bool Administracion::comprobarNIE(const string nie){ //Comprueba que el nie esta
         return false;
     }
     strcpy(NIE, nie.c_str()); //Se copia el string en una cadena de caracteres para trabajar mejor con el
-    //std::cout << "NIE: " << NIE << std::endl;
     for(int i = 0; i < 9; i++){
         if((NIE[i] < 48)||(NIE[i] > 57)){ //Se comprueba que todos los caracteres son numeros naturales
-            //std::cout << NIE[i];
-            //std::cout << "," << i << std::endl;
             std::cout << "NIE no valido, el NIE debe contener 9 numeros naturales 'NNNNNNNNN'" << std::endl;
             std::cout << "" << std::endl;
             return false;
             break;
         }
     }
-    //std::cout << "NIE valido" << std::endl;
     return true;
 }
 bool Administracion::existe_id(const string id){ //Comprueba que la id de un propietario (nif o nie) no esta registrada en el sistema
@@ -979,16 +970,13 @@ bool Administracion::comprobar_nRegistro(const string registro){ //Comprueba si 
         return false;
     }
     strcpy(aux, registro.c_str()); //Se transforma el string en char para trabajar mejor con el
-    //std::cout << "aux: " << aux << std::endl;
     if((aux[0] < 65)||(aux[0] > 90)){ //Se comprueba que el primer caracter es una letra mayuscula
-         //std::cout << NIF[8] << std::endl;
          std::cout << "Matrícula no valida, debe contener 4 numeros naturales y 4 letras mayusculas en este formato 'LNNNNLLL'" << std::endl;
          std::cout << "" << std::endl;
          return false;
     }else{ //Si lo anterior se cumple se comprueba el resto
          for(int i = 1; i < 5; i++){
              if((aux[i] < 48)||(aux[i] > 57)){ //se comprueba que los 4 siguientes son numero naturales
-                 //std::cout << aux[i] << "," << i << std::endl;
                  std::cout << "Número de registro no valido, debe contener 4 numeros naturales y 4 letras mayusculas en este formato 'LNNNNLLL'" << std::endl;
                  std::cout << "" << std::endl;
                  return false;
@@ -997,7 +985,6 @@ bool Administracion::comprobar_nRegistro(const string registro){ //Comprueba si 
          }
          for(int i = 5; i < 8; i++){
              if((aux[i] < 65)||(aux[i] > 90)){ //Se comprueba que los tres ultimos son letras mayusculas
-                 //std::cout << aux[i] << "," << i << std::endl;
                  std::cout << "Número de registro no valido, debe contener 4 numeros naturales y 4 letras mayusculas en este formato 'LNNNNLLL'" << std::endl;
                  std::cout << "" << std::endl;
                  return false;
@@ -1006,7 +993,6 @@ bool Administracion::comprobar_nRegistro(const string registro){ //Comprueba si 
          }
 
     }
-    //std::cout << "Registro valido" << std::endl;
     return true;
 }
 bool Administracion::existe_nRegistro(const string registro){ //Comprueba que la matricula no exsita ya en el sistema
@@ -1140,7 +1126,6 @@ string Administracion::fecha(unsigned short formato){ //Devuelve un string con l
 void Administracion::espera(){ //Espera a que el usuario pulse la tecla intro para cambiar de pantalla
     std::cout << "Pulse intro para continuar...";
     std::cin.get();
-    //std::cin.ignore(256, '\n');//limpiamos el buffer
     system("clear");
 }
 
